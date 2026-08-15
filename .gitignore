@@ -1,0 +1,7 @@
+/.vscode
+/.idea
+/.pycache
+/.DS_Store
+/.env
+job.pdf
+__pycache__
