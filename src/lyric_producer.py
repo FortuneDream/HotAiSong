@@ -2,6 +2,7 @@ import os
 
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_deepseek import ChatDeepSeek
+from src.state import UserGraphState
 
 
 class LyricProducer:
@@ -14,7 +15,7 @@ class LyricProducer:
             temperature=0,
         )
 
-    def __call__(self, state: dict):
+    def __call__(self, state: UserGraphState):
         messages = [
             SystemMessage(content=self.SYSTEM_PROMPT),
             HumanMessage(content=f"电影简介：{state['full_text']}"),

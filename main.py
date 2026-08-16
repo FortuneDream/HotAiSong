@@ -1,4 +1,4 @@
-from user_graph import user_graph
+from src.user_graph import user_graph
 
 
 if __name__ == "__main__":
