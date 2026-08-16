@@ -6,3 +6,8 @@ if __name__ == "__main__":
         {"prompt": "唐伯虎点秋香"},
         config={"configurable": {"thread_id": "1"}},
     )
+    print("\n-----------------\n")
+    user_graph.invoke(
+        {"prompt": "唐伯虎点秋香"},
+        config={"configurable": {"thread_id": "1"}},
+    )

@@ -16,6 +16,7 @@ class LyricProducer:
         )
 
     def __call__(self, state: UserGraphState):
+        print("lyric producer node")
         messages = [
             SystemMessage(content=self.SYSTEM_PROMPT),
             HumanMessage(content=f"电影简介：{state['full_text']}"),

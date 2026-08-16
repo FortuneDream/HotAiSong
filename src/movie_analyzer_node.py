@@ -16,6 +16,7 @@ class MovieAnalyzerNode:
         )
 
     def __call__(self, state: UserGraphState):
+        print("movie analyzer node")
         messages = [
             SystemMessage(content=self.SYSTEM_PROMPT),
             HumanMessage(content=state["prompt"]),
