@@ -9,7 +9,7 @@ from langsmith import Client
 
 from src.movie_analyzer_node import MovieAnalyzerNode
 from src.lyric_producer import LyricProducer
-from src.state import UserGraphState
+from src.state import UserGraphState, InputState, OutputState
 
 
 class UserGraph:
@@ -21,7 +21,7 @@ class UserGraph:
         cache = InMemoryCache()
         cache_policy = CachePolicy(ttl=10)
 
-        builder = StateGraph(UserGraphState)
+        builder = StateGraph(UserGraphState,input_schema=InputState,output_schema=OutputState)
         builder.add_node("movie_analyzer", MovieAnalyzerNode(), cache_policy=cache_policy)
         builder.add_node("lyric_producer", LyricProducer(), cache_policy=cache_policy)
         builder.set_entry_point("movie_analyzer")

@@ -2,7 +2,7 @@ import os
 
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_deepseek import ChatDeepSeek
-from src.state import UserGraphState
+from src.state import InputState, UserGraphState
 
 
 class MovieAnalyzerNode:
@@ -15,7 +15,7 @@ class MovieAnalyzerNode:
             temperature=0,
         )
 
-    def __call__(self, state: UserGraphState):
+    def __call__(self, state: InputState):
         print("movie analyzer node")
         messages = [
             SystemMessage(content=self.SYSTEM_PROMPT),
@@ -28,4 +28,4 @@ class MovieAnalyzerNode:
                 full_text_chunks.append(text)
                 print(text, end="", flush=True)
         print("\n")
-        return {"full_text": "".join(full_text_chunks)}
+        return {"movie_brief_text": "".join(full_text_chunks)}

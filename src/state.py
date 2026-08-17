@@ -3,5 +3,16 @@ from typing import TypedDict
 
 class UserGraphState(TypedDict):
     prompt: str
-    full_text: str
+    movie_brief_text: str
+    lyrics: str
+
+class InputState(TypedDict):
+    prompt: str
+
+class OutputState(TypedDict):
+    lyrics: str
+class MovieAnalyzerState(TypedDict):
+    movie_brief_text: str
+
+class LyricProducerState(TypedDict):
     lyrics: str

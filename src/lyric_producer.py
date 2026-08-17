@@ -2,7 +2,8 @@ import os
 
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_deepseek import ChatDeepSeek
-from src.state import UserGraphState
+from src.state import MovieAnalyzerState
+
 
 
 class LyricProducer:
@@ -15,11 +16,11 @@ class LyricProducer:
             temperature=0,
         )
 
-    def __call__(self, state: UserGraphState):
+    def __call__(self, state: MovieAnalyzerState):
         print("lyric producer node")
         messages = [
             SystemMessage(content=self.SYSTEM_PROMPT),
-            HumanMessage(content=f"电影简介：{state['full_text']}"),
+            HumanMessage(content=f"电影简介：{state['movie_brief_text']}"),
         ]
         lyrics_chunks = []
         for chunk in self.llm.stream(messages):
