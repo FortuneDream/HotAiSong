@@ -5,6 +5,7 @@ class UserGraphState(TypedDict):
     prompt: str
     movie_brief_text: str
     lyrics: str
+    approved: bool
 
 class InputState(TypedDict):
     prompt: str

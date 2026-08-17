@@ -9,6 +9,7 @@ from langsmith import Client
 
 from src.movie_analyzer_node import MovieAnalyzerNode
 from src.lyric_producer import LyricProducer
+from src.approve_lyrics import ApproveLyrics
 from src.state import UserGraphState, InputState, OutputState
 
 
@@ -24,11 +25,11 @@ class UserGraph:
 
         builder = StateGraph(UserGraphState,input_schema=InputState,output_schema=OutputState)
         builder.add_node("movie_analyzer", MovieAnalyzerNode(), cache_policy=cache_policy)
-        builder.add_node("lyric_producer", LyricProducer(), cache_policy=cache_policy)
+        builder.add_node("lyric_producer", LyricProducer())
+        builder.add_node("approve_lyrics", ApproveLyrics())
         builder.set_entry_point("movie_analyzer")
         builder.add_edge("movie_analyzer", "lyric_producer")
-        builder.add_edge("lyric_producer", END)
-
+        builder.add_edge("lyric_producer", "approve_lyrics")
         return builder.compile(checkpointer=checkpointer, cache=cache)
 
 
