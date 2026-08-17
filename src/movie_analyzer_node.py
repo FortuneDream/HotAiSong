@@ -2,7 +2,7 @@ import os
 
 from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_deepseek import ChatDeepSeek
-from src.state import InputState, UserGraphState
+from src.state import MovieState
 
 
 class MovieAnalyzerNode:
@@ -17,11 +17,11 @@ class MovieAnalyzerNode:
             top_p=1.0,
         )
 
-    def __call__(self, state: InputState):
+    def __call__(self, state: MovieState):
         print("movie analyzer node")
         messages = [
             SystemMessage(content=self.SYSTEM_PROMPT),
-            HumanMessage(content=state["prompt"]),
+            HumanMessage(content=state["movie_name"]),
         ]
         full_text_chunks = []
         for chunk in self.llm.stream(messages):
