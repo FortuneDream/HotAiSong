@@ -13,6 +13,8 @@ class MovieAnalyzerNode:
             model="deepseek-chat",
             api_key=os.getenv("DEEPSEEK_API_KEY"),
             temperature=0,
+            seed=1,
+            top_p=1.0,
         )
 
     def __call__(self, state: InputState):

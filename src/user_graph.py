@@ -18,6 +18,7 @@ class UserGraph:
         load_dotenv(override=True)
         Client(api_key=os.getenv("LANGSMITH_API_KEY"))
         checkpointer = MemorySaver()
+        ## todo 改成缓存才可以解决稳定输出，以及节省token成本
         cache = InMemoryCache()
         cache_policy = CachePolicy(ttl=10)
 
